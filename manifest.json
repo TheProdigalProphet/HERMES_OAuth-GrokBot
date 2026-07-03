@@ -1,0 +1,398 @@
+{
+  "name": "ai-linkedin-agent",
+  "description": "Hermes Agent integration for a constant user profile-enhanced LinkedIn assistant.",
+  "agent": "Hermes",
+  "input_form": "Hermes Agent on WSL",
+  "model": "xai-oath [grok-4.20-0309-reasoning]",
+  "version": "0.1.0",
+  "schema_version": "hermes-v1",
+  "tools": [
+    {
+      "name": "profile",
+      "description": "Manage the constant user profile used for personalization, job matching, and outreach.",
+      "actions": [
+        {
+          "name": "getProfile",
+          "method": "GET",
+          "path": "/profile",
+          "description": "Retrieve the current persisted user profile.",
+          "response_schema": {"$ref": "#/schemas/UserProfile"}
+        },
+        {
+          "name": "updateProfile",
+          "method": "POST",
+          "path": "/profile",
+          "description": "Update the agent's persistent user profile.",
+          "request_schema": {"$ref": "#/schemas/UserProfile"},
+          "response_schema": {"$ref": "#/schemas/UserProfile"}
+        }
+      ]
+    },
+    {
+      "name": "jobs",
+      "description": "Match jobs based on the user's constant profile and career goals.",
+      "actions": [
+        {
+          "name": "matchJobs",
+          "method": "GET",
+          "path": "/jobs/match",
+          "description": "Generate job matches and rationale using the current profile.",
+          "response_schema": {"$ref": "#/schemas/JobMatchResponse"}
+        }
+      ]
+    },
+    {
+      "name": "network",
+      "description": "Generate outreach and networking suggestions using the user's profile.",
+      "actions": [
+        {
+          "name": "generateOutreach",
+          "method": "POST",
+          "path": "/network/outreach",
+          "description": "Create a personalized outreach message for a target contact.",
+          "request_schema": {"$ref": "#/schemas/OutreachRequest"},
+          "response_schema": {"$ref": "#/schemas/OutreachResponse"}
+        }
+      ]
+    },
+    {
+      "name": "health",
+      "description": "Check agent readiness and server health.",
+      "actions": [
+        {
+          "name": "healthCheck",
+          "method": "GET",
+          "path": "/health",
+          "description": "Validate that the server and Hermes tool set are available.",
+          "response_schema": {"$ref": "#/schemas/HealthResponse"}
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "description": "Forward chat prompts to an upstream provider and return the response.",
+      "actions": [
+        {
+          "name": "chat",
+          "method": "POST",
+          "path": "/chat",
+          "description": "Send a prompt to a configured chat provider and return a formatted response.",
+          "request_schema": {"$ref": "#/schemas/ChatRequest"},
+          "response_schema": {"$ref": "#/schemas/ChatResponse"}
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "description": "Manage browser-based OAuth authorization for the agent.",
+      "actions": [
+        {
+          "name": "startAuthorization",
+          "method": "GET",
+          "path": "/auth/start",
+          "description": "Begin browser-based OAuth authorization flow.",
+          "response_schema": {"type": "object", "properties": {"detail": {"type": "string"}}}
+        },
+        {
+          "name": "getAuthStatus",
+          "method": "GET",
+          "path": "/auth/status",
+          "description": "Retrieve the current OAuth authorization status.",
+          "response_schema": {"$ref": "#/schemas/AuthStatusResponse"}
+        },
+        {
+          "name": "revokeAuthorization",
+          "method": "POST",
+          "path": "/auth/revoke",
+          "description": "Revoke the current authorization and clear stored access tokens.",
+          "response_schema": {"$ref": "#/schemas/AuthGrantResponse"}
+        }
+      ]
+    },
+    {
+      "name": "background",
+      "description": "Store and integrate career background documents into the elite profile.",
+      "actions": [
+        {
+          "name": "addBackgroundDocument",
+          "method": "POST",
+          "path": "/background/document",
+          "description": "Add a new background document and update the user profile accordingly.",
+          "request_schema": {"$ref": "#/schemas/BackgroundDocumentRequest"},
+          "response_schema": {"$ref": "#/schemas/BackgroundDocument"}
+        },
+        {
+          "name": "listBackgroundDocuments",
+          "method": "GET",
+          "path": "/background/documents",
+          "description": "List all stored background documents.",
+          "response_schema": {"type": "array", "items": {"$ref": "#/schemas/BackgroundDocument"}}
+        },
+        {
+          "name": "eliteProfile",
+          "method": "POST",
+          "path": "/background/elitesummary",
+          "description": "Return the elite profile synthesized from the current profile and background documents.",
+          "response_schema": {"$ref": "#/schemas/EliteProfileResponse"}
+        },
+        {
+          "name": "syncProfileFromDocuments",
+          "method": "POST",
+          "path": "/background/sync-profile",
+          "description": "Reprocess background documents and update the persistent user profile.",
+          "response_schema": {"$ref": "#/schemas/UserProfile"}
+        }
+      ]
+    },
+    {
+      "name": "evidence",
+      "description": "Track and report reunification evidence, DCP interactions, relapse prevention, and progress milestones.",
+      "actions": [
+        {
+          "name": "addEvidenceItem",
+          "method": "POST",
+          "path": "/evidence/item",
+          "description": "Add a structured evidence tracker item for reunification, relapse prevention, housing, legal, faith, or DCP interactions.",
+          "request_schema": {"$ref": "#/schemas/EvidenceItemRequest"},
+          "response_schema": {"$ref": "#/schemas/EvidenceItem"}
+        },
+        {
+          "name": "listEvidenceItems",
+          "method": "GET",
+          "path": "/evidence/items",
+          "description": "Retrieve all evidence tracker items for dashboard display, filtering, or export.",
+          "response_schema": {"type": "array", "items": {"$ref": "#/schemas/EvidenceItem"}}
+        },
+        {
+          "name": "getEvidenceMetrics",
+          "method": "GET",
+          "path": "/evidence/metrics",
+          "description": "Get summarized evidence dashboard metrics for progress and risk assessment.",
+          "response_schema": {"$ref": "#/schemas/EvidenceReportResponse"}
+        },
+        {
+          "name": "generateEvidenceReport",
+          "method": "POST",
+          "path": "/evidence/report",
+          "description": "Generate a reusable evidence report for the current month or specified month/year.",
+          "request_schema": {"$ref": "#/schemas/EvidenceReportRequest"},
+          "response_schema": {"$ref": "#/schemas/EvidenceReportResponse"}
+        }
+      ]
+    }
+  ],
+  "schemas": {
+    "ExperienceItem": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "company": {"type": "string"},
+        "start_date": {"type": "string"},
+        "end_date": {"type": "string"},
+        "description": {"type": "string"}
+      },
+      "required": ["title", "company"],
+      "additionalProperties": false
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "headline": {"type": ["string", "null"]},
+        "location": {"type": ["string", "null"]},
+        "industry": {"type": ["string", "null"]},
+        "skills": {"type": "array", "items": {"type": "string"}},
+        "goals": {"type": ["string", "null"]},
+        "summary": {"type": ["string", "null"]},
+        "experiences": {"type": "array", "items": {"$ref": "#/schemas/ExperienceItem"}}
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    },
+    "JobMatchResponse": {
+      "type": "object",
+      "properties": {
+        "profile_summary": {"type": "string"},
+        "match_hint": {"type": "string"},
+        "recommended_jobs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {"type": "string"},
+              "company": {"type": "string"},
+              "reason": {"type": "string"}
+            },
+            "required": ["title", "company", "reason"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["profile_summary", "match_hint", "recommended_jobs"],
+      "additionalProperties": false
+    },
+    "OutreachRequest": {
+      "type": "object",
+      "properties": {
+        "target_name": {"type": "string"},
+        "role": {"type": "string"},
+        "company": {"type": "string"}
+      },
+      "required": ["target_name", "role", "company"],
+      "additionalProperties": false
+    },
+    "OutreachResponse": {
+      "type": "object",
+      "properties": {
+        "target": {"type": "string"},
+        "message": {"type": "string"},
+        "profile_context": {"$ref": "#/schemas/UserProfile"}
+      },
+      "required": ["target", "message", "profile_context"],
+      "additionalProperties": false
+    },
+    "HealthResponse": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string"},
+        "reunification_progress": {"type": "string"},
+        "agent_input": {"type": "string"},
+        "model": {"type": "string"}
+      },
+      "required": ["status", "reunification_progress", "agent_input", "model"],
+      "additionalProperties": false
+    },
+    "BackgroundDocumentRequest": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "category": {"type": "string"},
+        "content": {"type": "string"}
+      },
+      "required": ["title", "category", "content"],
+      "additionalProperties": false
+    },
+    "BackgroundDocument": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "category": {"type": "string"},
+        "content": {"type": "string"},
+        "created_at": {"type": "string"}
+      },
+      "required": ["id", "title", "category", "content", "created_at"],
+      "additionalProperties": false
+    },
+    "EliteProfileResponse": {
+      "type": "object",
+      "properties": {
+        "profile": {"$ref": "#/schemas/UserProfile"},
+        "background_documents": {"type": "array", "items": {"$ref": "#/schemas/BackgroundDocument"}},
+        "elite_summary": {"type": "string"}
+      },
+      "required": ["profile", "background_documents", "elite_summary"],
+      "additionalProperties": false
+    },
+    "AuthStatusResponse": {
+      "type": "object",
+      "properties": {
+        "authorized": {"type": "boolean"},
+        "provider": {"type": ["string", "null"]},
+        "account": {"type": ["string", "null"]},
+        "access_token": {"type": ["string", "null"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "required": ["authorized"],
+      "additionalProperties": false
+    },
+    "AuthGrantResponse": {
+      "type": "object",
+      "properties": {
+        "authorized": {"type": "boolean"},
+        "account": {"type": ["string", "null"]},
+        "access_token": {"type": ["string", "null"]},
+        "message": {"type": "string"}
+      },
+      "required": ["authorized", "message"],
+      "additionalProperties": false
+    },
+    "EvidenceItemRequest": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "category": {"type": "string"},
+        "description": {"type": "string"},
+        "date": {"type": ["string", "null"]},
+        "due_date": {"type": ["string", "null"]},
+        "status": {"type": ["string", "null"]},
+        "risk_level": {"type": ["string", "null"]},
+        "follow_up": {"type": ["string", "null"]},
+        "tags": {"type": "array", "items": {"type": "string"}},
+        "faith_support": {"type": "boolean"},
+        "contact_type": {"type": ["string", "null"]}
+      },
+      "required": ["title", "category", "description"],
+      "additionalProperties": false
+    },
+    "EvidenceItem": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "created_at": {"type": "string"},
+        "title": {"type": "string"},
+        "category": {"type": "string"},
+        "description": {"type": "string"},
+        "date": {"type": ["string", "null"]},
+        "due_date": {"type": ["string", "null"]},
+        "status": {"type": ["string", "null"]},
+        "risk_level": {"type": ["string", "null"]},
+        "follow_up": {"type": ["string", "null"]},
+        "tags": {"type": "array", "items": {"type": "string"}},
+        "faith_support": {"type": "boolean"},
+        "contact_type": {"type": ["string", "null"]}
+      },
+      "required": ["id", "created_at", "title", "category", "description"],
+      "additionalProperties": false
+    },
+    "EvidenceReportRequest": {
+      "type": "object",
+      "properties": {
+        "month": {"type": ["integer", "null"]},
+        "year": {"type": ["integer", "null"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "EvidenceReportResponse": {
+      "type": "object",
+      "properties": {
+        "report_summary": {"type": "string"},
+        "metrics": {"type": "object"}
+      },
+      "required": ["report_summary", "metrics"],
+      "additionalProperties": false
+    },
+    "ChatRequest": {
+      "type": "object",
+      "properties": {
+        "message": {"type": "string"},
+        "use_background": {"type": "boolean"},
+        "profile_aware": {"type": "boolean"},
+        "metadata": {"type": ["object", "null"]}
+      },
+      "required": ["message"],
+      "additionalProperties": false
+    },
+    "ChatResponse": {
+      "type": "object",
+      "properties": {
+        "response": {"type": "string"},
+        "raw_response": {"type": ["object", "array", "string", "null"]}
+      },
+      "required": ["response"],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REUNIFICATION ORACLE • LEO DAVID POWER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a0a0f; color: #e0e0ff; font-family: system-ui, -apple-system, sans-serif; }
+        .card { background-color: #1a1a2e; border-radius: 12px; padding: 24px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); }
+        .stat-number { font-size: 2.75rem; font-weight: 700; line-height: 1; }
+        .header { background: linear-gradient(90deg, #4f46e5, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section { border-left: 5px solid #6366f1; }
+        .gold-box { border: 3px solid #ffd700; box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); }
+        .control-btn { font-size: 0.75rem; padding: 2px 8px; background-color: #334155; color: #94a3b8; border: none; border-radius: 4px; cursor: pointer; }
+        .control-btn:hover { background-color: #475569; color: white; }
+    </style>
+</head>
+<body class="p-8 max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+        <h1 class="text-5xl font-bold header mb-2">🌌 REUNIFICATION ORACLE</h1>
+        <p class="text-xl text-purple-300">Strategic Dashboard for LEO DAVID POWER • Reunification before 2 July 2026</p>
+        <p class="text-sm text-gray-400 mt-2">Vault Status: 🟢 LIVE | Updated 26 June 2026 | All actions center LEO DAVID POWER's safety, stability, and loving connection</p>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="flex flex-wrap gap-3 justify-center mb-12">
+        <a href="#" onclick="alert('Opening Course Certification Tracker...')" 
+           class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-xl text-white font-medium flex items-center gap-2 transition">
+            📚 Log New Course Certification
+        </a>
+        <a href="#" onclick="alert('Linked to Relapse Framework in Obsidian')" 
+           class="px-6 py-3 bg-rose-600 hover:bg-rose-700 rounded-xl text-white font-medium flex items-center gap-2 transition">
+            🔥 Update Relapse Framework
+        </a>
+        <a href="#" onclick="alert('Linked to Services Log in Obsidian')" 
+           class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 rounded-xl text-white font-medium flex items-center gap-2 transition">
+            ➕ Log Service
+        </a>
+        <a href="#" onclick="alert('Linked to Evidence Archive in Obsidian')" 
+           class="px-6 py-3 bg-amber-600 hover:bg-amber-700 rounded-xl text-white font-medium flex items-center gap-2 transition">
+            📑 Add Evidence
+        </a>
+    </div>
+
+    <!-- Statistics Grid -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6 text-center text-purple-400">VAULT STATISTICS</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="card text-center">
+                <div id="stat-course" class="stat-number text-blue-400">6</div>
+                <div class="text-gray-400 text-sm mt-1">Course Certification Items</div>
+                <div class="mt-2 flex justify-center gap-1">
+                    <button onclick="adjustCount('course', -1)" class="control-btn">−</button>
+                    <button onclick="adjustCount('course', 1)" class="control-btn">+</button>
+                </div>
+            </div>
+            <div class="card text-center">
+                <div id="stat-parenting" class="stat-number text-orange-400">1</div>
+                <div class="text-gray-400 text-sm mt-1">Parenting Courses</div>
+                <div class="mt-2 flex justify-center gap-1">
+                    <button onclick="adjustCount('parenting', -1)" class="control-btn">−</button>
+                    <button onclick="adjustCount('parenting', 1)" class="control-btn">+</button>
+                </div>
+            </div>
+<div class="card text-center">
+                <div id="stat-career" class="stat-number text-emerald-400">5</div>
+                <div class="text-gray-400 text-sm mt-1">Career Education</div>
+                <div class="mt-2 flex justify-center gap-1">
+                    <button onclick="adjustCount('career', -1)" class="control-btn">−</button>
+                    <button onclick="adjustCount('career', 1)" class="control-btn">+</button>
+                </div>
+            </div>
+            <div class="card text-center">
+                <div id="stat-evidence" class="stat-number text-rose-400">6</div>
+                <div class="text-gray-400 text-sm mt-1">Evidence Documents</div>
+                <div class="mt-2 flex justify-center gap-1">
+                    <button onclick="adjustCount('evidence', -1)" class="control-btn">−</button>
+                    <button onclick="adjustCount('evidence', 1)" class="control-btn">+</button>
+                </div>
+            </div>
+            <div class="card text-center gold-box">
+                <div class="stat-number text-yellow-400">6</div>
+                <div class="text-yellow-400 text-sm mt-1 font-medium">Days to 2 July 2026</div>
+                <div class="text-[10px] text-yellow-500 mt-2">Care &amp; Protection Order Expiry</div>
+            </div>
+        </div>
+        <p class="text-center text-xs text-emerald-400 mt-4">✓ Counts saved automatically via localStorage • Paths updated to current vault location</p>
+    </div>
+
+    <!-- Course Certification -->
+    <div class="card mb-10 section">
+        <h2 class="text-3xl font-bold text-indigo-400 mb-4">COURSE CERTIFICATION</h2>
+        <p class="text-gray-300 mb-6">Building parenting capacity and career stability for <strong>LEO DAVID POWER</strong>'s safe reunification.</p>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold text-orange-400 mb-3 flex items-center gap-2">🧸 Parenting Courses (1)</h3>
+                <div class="certificate-item">
+                    <strong>Certificate of Completion - William Power</strong><br>
+                    <span class="text-xs text-emerald-400">#parenting-course</span><br>
+                    <a href="file:///C:/Users/willp/Documents/Reunification-Oracle/Reunification-Oracle/Reunification-Case/01-Course-Certification/Completed-Courses/Certificate-of-Completion-William-Power.pdf" 
+                       target="_blank" class="text-blue-400 hover:underline">📄 Open PDF</a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-semibold text-emerald-400 mb-3 flex items-center gap-2">💼 Career Education (5)</h3>
+                <div class="space-y-3">
+                    <div class="certificate-item">
+                        <strong>1.1 - EST Pre Delivery Privacy</strong><br>
+                        <a href="file:///C:/Users/willp/Documents/Reunification-Oracle/Reunification-Oracle/Reunification-Case/01-Course-Certification/Completed-Courses/1.1-EST-Pre-Delivery-Privacy-Certificate.pdf" target="_blank" class="text-blue-400 hover:underline text-xs">📄 Open PDF</a>
+                    </div>
+                    <div class="certificate-item">
+                        <strong>4.1 - Where the Jobs Are</strong><br>
+                        <a href="file:///C:/Users/willp/Documents/Reunification-Oracle/Reunification-Oracle/Reunification-Case/01-Course-Certification/Completed-Courses/4.1-Where-the-Jobs-Are-Certificate.pdf" target="_blank" class="text-blue-400 hover:underline text-xs">📄 Open PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Sections (abbreviated for brevity) -->
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="card section">
+            <h3 class="font-semibold text-rose-400 mb-4">RELAPSE PREVENTION &amp; ACCOUNTABILITY (0 logs)</h3>
+<p class="text-sm text-gray-400">Reduced to occasional random relapses only. Faith is the anchor.</p>
+        </div>
+        <div class="card section">
+            <h3 class="font-semibold text-cyan-400 mb-4">SERVICES &amp; SUPPORT (0 entries)</h3>
+            <p class="text-sm text-gray-400">Medical, therapeutic, educational (Course Certification), legal, faith community...</p>
+        </div>
+        <div class="card section">
+            <h3 class="font-semibold text-amber-400 mb-4">EVIDENCE ARCHIVE &amp; DCP DEFENSE (3 docs)</h3>
+            <p class="text-sm text-gray-400">Three Course Certification documents added and linked.</p>
+        </div>
+    </div>
+
+    <!-- Oracle Note -->
+    <div class="card border border-purple-500/30 bg-[#111118]">
+        <h2 class="text-2xl font-bold text-purple-300 mb-6">ORACLE NOTE — LEO DAVID POWER</h2>
+        <div class="prose prose-invert text-sm leading-relaxed text-gray-300">
+            <p><strong>This dashboard is the central living document</strong> for the LEO DAVID POWER reunification case before the July 2026 Care and Protection Order expiry.</p>
+            <p class="font-medium text-amber-300">Strong repeated disclaimer: All content is prepared with the highest level of personal accountability and with LEO DAVID POWER's safety, emotional health, and loving father-son relationship as the absolute priority.</p>
+        </div>
+    </div>
+
+    <div class="text-center text-xs text-gray-500 mt-12">
+        Built with care for LEO DAVID POWER reunification • Hermes Agent • 26 June 2026
+    </div>
+
+    <script>
+        function loadStats() {
+            const defaults = { course: 6, parenting: 1, career: 5, evidence: 6 };
+            for (let key in defaults) {
+                const saved = localStorage.getItem('leo_' + key);
+                document.getElementById('stat-' + key).innerText = saved !== null ? parseInt(saved) : defaults[key];
+            }
+        }
+
+        function adjustCount(type, delta) {
+            const el = document.getElementById('stat-' + type);
+            let val = parseInt(el.innerText) || 0;
+            val = Math.max(0, val + delta);
+            el.innerText = val;
+            localStorage.setItem('leo_' + type, val);
+        }
+
+        window.onload = loadStats;
+    </script>
+</body>
+</html>

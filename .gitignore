@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Local data store
+/data/*.json
+
+# VS Code
+.vscode/
+
+# Environment files
+.env

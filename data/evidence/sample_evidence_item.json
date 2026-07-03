@@ -1,0 +1,15 @@
+{
+  "id": "sample-evidence-item-001",
+  "created_at": "2026-06-25T00:00:00Z",
+  "title": "Initial DCP contact log and solicitor briefing",
+  "category": "DCP Interaction",
+  "description": "Documented the first DCP meeting, requested a written case plan, and provided the family solicitor with the full reunification background package.",
+  "date": "2026-06-20",
+  "due_date": "2026-07-05",
+  "status": "in progress",
+  "risk_level": "high",
+  "follow_up": "Request formal DCP case plan and independent psychological assessment for Leo.",
+  "tags": ["DCP", "legal", "reunification"],
+  "faith_support": true,
+  "contact_type": "DCP meeting"
+}
