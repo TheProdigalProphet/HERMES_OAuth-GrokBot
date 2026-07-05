@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "bac3516d44bc6b72",
+        "id": "1fea832f748ba5ce",
         "type": "tabs",
         "children": [
           {
-            "id": "03ea13bcfbbd9e89",
+            "id": "112adc835fe4f675",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -157,13 +157,43 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "98db74fc3ef34551",
+            "type": "leaf",
+            "state": {
+              "type": "github-copilot-chat-view",
+              "state": {},
+              "icon": "bot-message-square",
+              "title": "Copilot Chat"
+            }
+          },
+          {
+            "id": "05a4791558bb8722",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "8b53c9f1c1a89ec3",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -173,9 +203,33 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "markdown-importer:Open format converter": false,
+      "workspaces:Manage workspace layouts": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-kanban:Create new board": false,
+      "rss-dashboard:RSS dashboard": false,
+      "css-editor:Open CSS editor quick switcher": false,
+      "remotely-secure:Remotely Sync": false,
+      "github-sync:Sync with Remote": false,
+      "github-copilot-integration:Open Copilot Chat": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Toggle Footer Connections": false,
+      "smart-connections:Smart Connections: Open random connection": false,
+      "obsidian-leaflet-plugin:Open Leaflet Map": false,
+      "smart-composer:Open smart composer": false
     }
   },
-  "active": "03ea13bcfbbd9e89",
-  "lastOpenFiles": []
+  "active": "112adc835fe4f675",
+  "lastOpenFiles": [
+    "Excalidraw/Drawing 2026-07-04 01.39.01.excalidraw.md",
+    "Untitled.base",
+    "Excalidraw",
+    "REUNIFICATION-ORACLE-DASHBOARD.md",
+    "AGENTIC_OBSIDIAN_VAULT/README.md",
+    "Full-Vault-Index.md"
+  ]
 }

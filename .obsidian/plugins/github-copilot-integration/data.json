@@ -1,0 +1,63 @@
+{
+  "actions": [
+    {
+      "name": "General help",
+      "icon": "🪄",
+      "system": "You are an assistant helping a user write more content in a document based on a prompt. Output in Markdown.",
+      "prompt": "Act as a professional editor with many years of experience as a writer. Carefully finalize the following text, and improve it for readability and flow.",
+      "replaceSelection": true
+    },
+    {
+      "name": "Continue writing",
+      "icon": "✍️",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Continue writing the following text naturally, maintaining the same tone and style.",
+      "replaceSelection": false
+    },
+    {
+      "name": "Summarize",
+      "icon": "🍭",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Make a concise summary of the key points of the following text.",
+      "replaceSelection": false
+    },
+    {
+      "name": "Fix spelling and grammar",
+      "icon": "📖",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Proofread the below for spelling and grammar. Return only the corrected text.",
+      "replaceSelection": true
+    },
+    {
+      "name": "Find action items",
+      "icon": "✅",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Act as an assistant helping find action items inside a document. An action item is an extracted task or to-do found in the text. Format each item as a Markdown checkbox: - [ ] item text",
+      "replaceSelection": false
+    },
+    {
+      "name": "Rewrite selection",
+      "icon": "🔄",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Rewrite the following text to improve clarity, grammar, and style. Return only the rewritten text.",
+      "replaceSelection": true
+    },
+    {
+      "name": "Generate code",
+      "icon": "💻",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Based on the following text, generate code that accomplishes what is described. Wrap all code output in a fenced Markdown code block with the appropriate language identifier. Only output the code block, no additional explanation.",
+      "replaceSelection": false
+    },
+    {
+      "name": "Plan",
+      "icon": "🧠",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "You are a top-tier DevOps engineer about to embark on a new project. Based on the provided information given to you, generate a highly detailed spec on how to accomplish this project.",
+      "replaceSelection": false
+    }
+  ],
+  "defaultModel": "auto",
+  "cliPathOverride": true,
+  "cliPath": ""
+}
