@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # publish-personas-wsl.sh
 # Publish all local agent personas into a running Hermes backend on WSL
@@ -24,11 +24,11 @@ for persona_file in "$BACKGROUND_DIR"/*.json; do
     if [ -f "$persona_file" ]; then
         filename=$(basename "$persona_file")
         echo "Publishing: $filename"
-        
+
         response=$(curl -s -X POST "$HERMES_URL/background/document" \
             -H "Content-Type: application/json" \
             -d @"$persona_file")
-        
+
         if echo "$response" | grep -q '"id"'; then
             echo "  ✓ Success"
             ((count++))

@@ -160,6 +160,30 @@ To stop it:
 kill "$(cat /tmp/streamlit_hermes.pid)"
 ```
 
+## Unified Hermes sync helper
+
+To prepare the WSL virtual environment, start the FastAPI backend, sync `manifest.json`, and publish local personas in one step, run:
+
+```bash
+cd /path/to/HERMES_OAuth-GrokBot
+chmod +x scripts/unified-hermes-sync.sh
+./scripts/unified-hermes-sync.sh
+```
+
+This helper will:
+- create or repair the WSL `.venv` when needed
+- start the backend on `127.0.0.1:8000`
+- wait for `GET /health`
+- sync the Hermes agent manifest against the running backend
+- publish `data/background/*.json` persona documents
+- leave the backend running and write its PID to `/tmp/hermes_backend.pid`
+
+To stop the backend afterward:
+
+```bash
+kill "$(cat /tmp/hermes_backend.pid)"
+```
+
 ## Hermes Chat proxy
 
 This repo includes a local `/chat` proxy at `http://127.0.0.1:8000/chat`.
